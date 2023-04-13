@@ -1,8 +1,0 @@
-<RCC>
-  <qresource lang="logo" prefix="logo">
-    <file>18721569.jpg</file>
-    <file>eth_dmavt_logo_pos.png</file>
-    <file>arsl_logo.png</file>
-    <file>eth_logo_kurz_pos.png</file>
-  </qresource>
-</RCC>
