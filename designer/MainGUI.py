@@ -50,7 +50,7 @@ from PyQt5.QtGui import QPixmap, QImage, QPalette, QBrush, QColor
 from PyQt5.QtWidgets import QGraphicsPixmapItem
 from PyQt5.QtGui import QOpenGLShader, QOpenGLShaderProgram, QOpenGLContext
 from PyQt5.QtWidgets import QOpenGLWidget
-
+import os
 import vedo
 import numpy as np
 import sys
@@ -58,6 +58,9 @@ import os
 import vamtoolbox as vam
 import logging
 
+current_dir = os.path.dirname(os.path.realpath(__file__))
+dir_main= os.path.dirname(current_dir)
+print("Main Directory:", dir_main)
 
 class Opt(QWidget):
     def __init__(self):
@@ -75,7 +78,13 @@ class Opt(QWidget):
         #######################################################################################
         #######################################################################################
         #######################################################################################
-        uic.loadUi(r"D:\ETH_ARSL_Project\VAMToolbox-main\designer\3DOptimization.ui", self)
+
+        current_dir = os.path.dirname(os.path.realpath(__file__))
+        global dir_main
+        dir_main= os.path.dirname(current_dir)
+        print("Software Directory:", dir_main)
+        ui_file_1 = os.path.join(dir_main, 'designer', '3DOptimization.ui')
+        uic.loadUi(ui_file_1, self)
         self.show()
         print("Showing optimization window...")
         self.textBrowser.append("Showing optimization window...")
@@ -151,9 +160,9 @@ class Opt(QWidget):
             #######################################################################################
             #######################################################################################
             #######################################################################################
-            target_file_path = "D:/ETH_ARSL_Project/VAMToolbox-main/mytarget/" + file_name + ".target"
-            sino_file_path = "D:/ETH_ARSL_Project/VAMToolbox-main/mysinogram/" + file_name + ".sino"
-            recon_file_path = "D:/ETH_ARSL_Project/VAMToolbox-main/myreconstruction/" + file_name + ".recon"
+            target_file_path = dir_main + "\mytarget" + file_name + ".target"
+            sino_file_path = dir_main + "mysinogram/" + file_name + ".sino"
+            recon_file_path = dir_main + "mysinogram/" + file_name + ".recon"
             if file_name:
                 resolution = self.spinBox.value()
                 iteration = self.spinBox_2.value()
@@ -535,7 +544,8 @@ class Main1(QWidget):
         #######################################################################################
         #######################################################################################
         #######################################################################################
-        uic.loadUi(r"D:\ETH_ARSL_Project\VAMToolbox-main\designer\MainWindow1.ui", self)
+        ui_file_2 = os.path.join(dir_main, 'designer', 'MainWindow1.ui')
+        uic.loadUi(ui_file_2, self)
         print("Showing main window...")
         self.textBrowser.append("Showing main window...")
 
@@ -620,9 +630,9 @@ class Main1(QWidget):
                 #######################################################################################
                 #######################################################################################
                 #######################################################################################
-                target_file_path = "D:/ETH_ARSL_Project/VAMToolbox-main/mytarget/" + file_name + ".target"
-                sino_file_path = "D:/ETH_ARSL_Project/VAMToolbox-main/mysinogram/" + file_name + ".sino"
-                recon_file_path = "D:/ETH_ARSL_Project/VAMToolbox-main/myreconstruction/" + file_name + ".recon"
+                target_file_path = dir_main + "mytarget/" + file_name + ".target"
+                sino_file_path = dir_main + "mysinogram/" + file_name + ".sino"
+                recon_file_path = dir_main + "mysinogram/" + file_name + ".recon"
                 if file_name:
                     resolution = self.spinBox.value()
                     iteration = self.spinBox_2.value()
@@ -760,7 +770,8 @@ class MainGUI(QtWidgets.QMainWindow):
         #######################################################################################
         #######################################################################################
         #######################################################################################
-        uic.loadUi(r"D:\ETH_ARSL_Project\VAMToolbox-main\designer\MainWindow.ui", self)
+        ui_file_3 = os.path.join(dir_main, 'designer', 'MainWindow.ui')
+        uic.loadUi(ui_file_3, self)
         self.show()
         print("Showing welcoming window...")
         self.statusbar.showMessage(
