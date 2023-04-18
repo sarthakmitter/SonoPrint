@@ -339,7 +339,8 @@ class Pjt(QWidget):
         #######################################################################################
         #######################################################################################
         #######################################################################################
-        uic.loadUi(r"D:\ETH_ARSL_Project\VAMToolbox-main\designer\Projection.ui", self)
+        ui_file_4 = os.path.join(dir_main, 'designer', 'Projection.ui')
+        uic.loadUi(ui_file_4,self)
         self.setWindowTitle("Projection Window")
 
         self.show()
